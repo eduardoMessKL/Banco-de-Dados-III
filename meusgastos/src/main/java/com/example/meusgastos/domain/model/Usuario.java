@@ -15,11 +15,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 @Entity
 
-public class Usuario /*implements UserDetails*/{
+public class Usuario implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUsuario")
-    private long id;
+    private Long id;
     private String nome;
 
     @Column(nullable = false, unique = true)
@@ -38,10 +38,10 @@ public class Usuario /*implements UserDetails*/{
     @OneToMany(mappedBy = "usuario")
     private List<Titulo> titulos;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getNome() {
@@ -87,11 +87,11 @@ public class Usuario /*implements UserDetails*/{
         this.titulos = titulos;
     }
 
-
-   /* @Override
+   @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
+
     @Override
     public String getPassword() {
         return senha;
@@ -116,5 +116,4 @@ public class Usuario /*implements UserDetails*/{
     public boolean isEnabled() {
         return true;
     } 
-*/
 }
