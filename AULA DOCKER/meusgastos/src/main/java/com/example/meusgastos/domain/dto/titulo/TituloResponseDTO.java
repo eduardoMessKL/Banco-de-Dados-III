@@ -1,39 +1,16 @@
-package com.example.meusgastos.domain.model;
+package com.example.meusgastos.domain.dto.titulo;
 
 import java.util.Date;
 import java.util.List;
 
 import com.example.meusgastos.domain.Enum.ETipoTitulo;
+import com.example.meusgastos.domain.dto.centrodecusto.CentroDeCustoResponseDTO;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-
-@Entity
-public class Titulo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTitulo")
+public class TituloResponseDTO {
     private Long id;
-    @Column(nullable = false)
     private String descricao;
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
     private ETipoTitulo tipo;
-    @ManyToMany
-    @JoinTable(
-        name = "titulo_centrodecusto",
-        joinColumns = @JoinColumn(name = "idTitulo"),
-        inverseJoinColumns = @JoinColumn(name = "idCentroDeCusto")
-    )
-    private List<CentroDeCusto> centrosDeCustos;
+    private List<CentroDeCustoResponseDTO> centroDeCustos;
     private Double valor;
     private Date dataCadastro;
     private Date dataReferencia;
@@ -41,12 +18,6 @@ public class Titulo {
     private Date dataPagamento;
     private String observacao;
     
-    public Date getDataVencimento() {
-        return dataVencimento;
-    }
-    public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
     public Long getId() {
         return id;
     }
@@ -59,23 +30,17 @@ public class Titulo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public Usuario getUsuario() {
-        return usuario;
-    }
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
     public ETipoTitulo getTipo() {
         return tipo;
     }
     public void setTipo(ETipoTitulo tipo) {
         this.tipo = tipo;
     }
-    public List<CentroDeCusto> getCentrosDeCustos() {
-        return centrosDeCustos;
+    public List<CentroDeCustoResponseDTO> getCentroDeCustos() {
+        return centroDeCustos;
     }
-    public void setCentrosDeCustos(List<CentroDeCusto> centroDeCustos) {
-        this.centrosDeCustos = centroDeCustos;
+    public void setCentroDeCustos(List<CentroDeCustoResponseDTO> centroDeCustos) {
+        this.centroDeCustos = centroDeCustos;
     }
     public Double getValor() {
         return valor;
@@ -95,6 +60,12 @@ public class Titulo {
     public void setDataReferencia(Date dataReferencia) {
         this.dataReferencia = dataReferencia;
     }
+    public Date getDataVencimento() {
+        return dataVencimento;
+    }
+    public void setDataVencimento(Date dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
     public Date getDataPagamento() {
         return dataPagamento;
     }
@@ -107,5 +78,4 @@ public class Titulo {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-
 }
