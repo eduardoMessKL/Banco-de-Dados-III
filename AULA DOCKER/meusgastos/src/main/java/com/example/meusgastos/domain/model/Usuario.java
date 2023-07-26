@@ -86,12 +86,10 @@ public class Usuario implements UserDetails{
     public void setTitulos(List<Titulo> titulos) {
         this.titulos = titulos;
     }
-
    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
-
     @Override
     public String getPassword() {
         return senha;

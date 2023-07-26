@@ -35,11 +35,11 @@ public class TituloService implements ICRUDService<TituloRequestDTO, TituloRespo
 
     @Override
     public TituloResponseDTO obterPorId(Long id) {
-        Optional<Titulo> optTitulo = TituloRepository.findById(id);
+        Optional<Titulo> optTitulo = tituloRepository.findById(id);
         if(optTitulo.isEmpty()){
             throw new ResourceNotFoundException("Não foi possivel encontrar o titulo com o id:" + id);
         }
-        return mapper.map(optTitulo, TituloResponseDTO.class);
+        return mapper.map(optTitulo.get(), TituloResponseDTO.class);
     }
 
     @Override
