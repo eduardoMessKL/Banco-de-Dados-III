@@ -29,24 +29,20 @@ public class Titulo {
     private ETipoTitulo tipo;
     @ManyToMany
     @JoinTable(
-        name = "titulo_centrodecusto",
-        joinColumns = @JoinColumn(name = "idTitulo"),
-        inverseJoinColumns = @JoinColumn(name = "idCentroDeCusto")
+        name="titulo_centrodecusto",
+        joinColumns = @JoinColumn(name="idTitulo"),
+        inverseJoinColumns = @JoinColumn(name="idCentroDeCusto")
     )
     private List<CentroDeCusto> centrosDeCustos;
+    @Column(nullable = false)
     private Double valor;
     private Date dataCadastro;
     private Date dataReferencia;
     private Date dataVencimento;
     private Date dataPagamento;
+    @Column(columnDefinition = "TEXT")
     private String observacao;
-    
-    public Date getDataVencimento() {
-        return dataVencimento;
-    }
-    public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
+
     public Long getId() {
         return id;
     }
@@ -74,8 +70,8 @@ public class Titulo {
     public List<CentroDeCusto> getCentrosDeCustos() {
         return centrosDeCustos;
     }
-    public void setCentrosDeCustos(List<CentroDeCusto> centroDeCustos) {
-        this.centrosDeCustos = centroDeCustos;
+    public void setCentrosDeCustos(List<CentroDeCusto> centrosDeCustos) {
+        this.centrosDeCustos = centrosDeCustos;
     }
     public Double getValor() {
         return valor;
@@ -95,6 +91,12 @@ public class Titulo {
     public void setDataReferencia(Date dataReferencia) {
         this.dataReferencia = dataReferencia;
     }
+    public Date getDataVencimento() {
+        return dataVencimento;
+    }
+    public void setDataVencimento(Date dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
     public Date getDataPagamento() {
         return dataPagamento;
     }
@@ -108,4 +110,6 @@ public class Titulo {
         this.observacao = observacao;
     }
 
+    
 }
+

@@ -42,6 +42,12 @@ public class TituloService implements ICRUDService<TituloRequestDTO, TituloRespo
         return mapper.map(optTitulo.get(), TituloResponseDTO.class);
     }
 
+    public List<TituloResponseDTO> obterPorDataDeVencimento(String periodoInicial, String periodoFinal){
+        List<Titulo> titulos = tituloRepository.obterFluxoCaixaPorDataVencimento(periodoInicial, periodoFinal);
+        return titulos.stream()
+        .map(titulo -> mapper.map(titulo, TituloResponseDTO.class)).collect(Collectors.toList());
+    }
+
     @Override
     public TituloResponseDTO cadastrar(TituloRequestDTO dto) {
         validarTitulo(dto);
